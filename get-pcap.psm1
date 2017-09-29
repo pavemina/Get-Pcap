@@ -44,11 +44,16 @@
             $finishedline = ""
             $brokenline = ($line -replace '\s+', ' ').Split(" ")
             $finishedline += ($BrokenLine[0] -replace "0x", "")
-
+            
             $dataonly = $brokenline[1..($brokenline.Length - 2)]
             foreach ($hex in $dataonly) {
-                # split the string in half, insert space inbetween and append to finished line
-                $finishedline += " "+$hex.substring(0,2) +" " + $hex.substring(2,2)
+                if ($hex.Length -eq 2) {
+                    $finishedline += $hex
+                }
+                else {
+                    # split the string in half, insert space inbetween and append to finished line
+                    $finishedline += " "+$hex.substring(0,2) +" " + $hex.substring(2,2)
+                }
             }
             $cleandata.Add($finishedline) > $null
         }
