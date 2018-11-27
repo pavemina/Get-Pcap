@@ -48,7 +48,7 @@
             $dataonly = $brokenline[1..($brokenline.Length - 2)]
             foreach ($hex in $dataonly) {
                 if ($hex.Length -eq 2) {
-                    $finishedline += $hex
+                    $finishedline += " "+$hex
                 }
                 else {
                     # split the string in half, insert space inbetween and append to finished line
