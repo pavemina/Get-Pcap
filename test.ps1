@@ -10,6 +10,12 @@ if ($ManualSample -eq "")
     $generateReference = $true
 }
 
+if (!(Get-Command Get-Pcap -ErrorAction SilentlyContinue))
+{
+    Write-Output "Get-Pcap not imported! Exiting."
+    exit
+}
+
 $outGetPcap = New-TemporaryFile
 $outFgt2eth = New-TemporaryFile
 
